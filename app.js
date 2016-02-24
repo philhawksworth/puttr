@@ -72,7 +72,6 @@ function onResolve(data) {
     // }
     searchResults.push(t);
   }
-  console.log(chalk.green("resolved"));
   deferred.resolve();
   return deferred.promise;
 }
