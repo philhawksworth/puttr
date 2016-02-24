@@ -81,12 +81,12 @@ function onReject(err) {
   console.log(chalk.red(err));
 }
 
-// const server = new Hapi.Server();
-var server = new Hapi.Server((process.env.PORT || 5000)
+const server = new Hapi.Server();
 
-// server.connection({
-//   port: 3000
-// });
+
+server.connection({
+  port: process.env.PORT || 5000
+});
 
 
 server.register(require('vision'), (err) => {
