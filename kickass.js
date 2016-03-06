@@ -34,8 +34,6 @@ module.exports = {
             }
 
             var date_added = moment(Date.parse(data.list[torrent].pubDate)).fromNow();
-
-            // var magnet_link = "magnet:?xt=urn:btih:" + data.list[torrent].hash + "&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce";
             var magnet_link = "magnet:?xt=urn:btih:" + data.list[torrent].hash + "&dn=" + title;
 
 

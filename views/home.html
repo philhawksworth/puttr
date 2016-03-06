@@ -17,10 +17,10 @@
       text-align: center;
       padding:10px;
     }
-    input[type="text"] {
+    input[type="search"] {
       width:100%;
       border-radius: 0;
-      font-size: 16px;
+      font-size: 18px;
       padding:0.2em;
       margin:10px 0 20px;
     }
@@ -46,13 +46,13 @@
 </head>
 <body>
   <form action="." method="post" accept-charset="utf-8">
-  <input type="text" id="search" name="search" value="{{search}}"></input>
+  <input type="search" id="search" name="search" value="{{search}}"></input>
   </form>
   <div class="results">
     <p>{{results.length}} results</p>
     <ul>
     {{#results}}
-      <li><a href="{{torrent_link}}" class="magnet">{{title}}</a> <p>{{size}}</p></li>
+      <li><a href="{{torrent_link}}" class="magnet">{{title}}</a> <p>{{size}} {{seeds}}</p></li>
     {{/results}}
     </ul>
   </div>

@@ -33,8 +33,8 @@ module.exports = {
               eztv_link = $(torrent).find("a.magnet").attr('href');
               torrent_title = $(torrent).find("a.epinfo").text();
               torrent_size = $(torrent).find("a.epinfo").attr("title").match(/\([^)]+\)$/)[0].slice(1,-1);
-              //torrent_seeds = $(torrent).find(".seed").text();
-              //torrent_leech = $(torrent).find(".leech").text();
+              torrent_seeds = $(torrent).find(".seed").text();
+              torrent_leech = $(torrent).find(".leech").text();
               date_added = $("td.forum_thread_post_end", torrent).prev().text();
 
               data_content = {

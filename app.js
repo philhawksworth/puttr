@@ -6,8 +6,10 @@ var os = require('os');
 var fs = require('fs');
 var http = require('http');
 var chalk = require('chalk');
+
 var kickass = require('./kickass.js');
 var eztv = require('./eztv.js');
+var limetorrents = require('./limetorrents.js');
 
 
 const server = new Hapi.Server();
@@ -40,11 +42,12 @@ server.route({
   path: '/',
   handler: function (request, reply) {
 
-    query = request.payload.search;
+    var query = request.payload.search;
 
     Q.allSettled([
       kickass.search(query, null, 1, "https://kat.cr"),
       eztv.search(query, "https://www.eztv.it"),
+      limetorrents.search(query, null, 1, "http://limetorrents.cc")
     ])
     .then(function (results) {
         var resultsArray = [];
@@ -52,6 +55,9 @@ server.route({
         results.forEach(function (result) {
           if (result.state === "fulfilled") {
             result.value.forEach(function (item) {
+              // var link = item.torrent_link;
+              // var hash = link.match(/btih:(.+)&dn/)[1];
+              // console.log(hash);
               resultsArray.push(item);
             });
           } else {
@@ -59,7 +65,8 @@ server.route({
               console.log(reason);
           }
         });
-        console.log("resultsArray " + resultsArray.length);
+
+
         reply.view('home', {
           results: resultsArray,
           search: query
