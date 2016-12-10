@@ -11,6 +11,10 @@ module.exports = {
     var torrent_verified;
 
     var search_url = kickass_url + '/json.php?q=' + encodeURIComponent(query) + '&field=seeders&order=desc&page=' + page;
+    
+
+    console.log("KA search: ", search_url);
+
 
     request(search_url, function(err, response, body){
 
@@ -33,6 +37,7 @@ module.exports = {
               torrent_verified = " ";
             }
 
+
             var date_added = moment(Date.parse(data.list[torrent].pubDate)).fromNow();
             var magnet_link = "magnet:?xt=urn:btih:" + data.list[torrent].hash + "&dn=" + title;
 
@@ -46,7 +51,8 @@ module.exports = {
               size: size,
               torrent_link: magnet_link,
               torrent_verified:torrent_verified,
-              date_added: date_added
+              date_added: date_added,
+              source: "kickass"
             };
 
             torrent_content.push(data_content);

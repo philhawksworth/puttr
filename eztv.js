@@ -27,15 +27,16 @@ module.exports = {
 
           var eztv_link, torrent_title, torrent_size, torrent_seeds, torrent_leech, date_added;
           $ = cheerio.load(body);
+
           if($("tr.forum_header_border").length > 0) {
 
             $("tr.forum_header_border").each(function(index, torrent){
               eztv_link = $(torrent).find("a.magnet").attr('href');
               torrent_title = $(torrent).find("a.epinfo").text();
               torrent_size = $(torrent).find("a.epinfo").attr("title").match(/\([^)]+\)$/)[0].slice(1,-1);
-              torrent_seeds = $(torrent).find(".seed").text();
-              torrent_leech = $(torrent).find(".leech").text();
-              date_added = $("td.forum_thread_post_end", torrent).prev().text();
+              torrent_seeds = $("td.forum_thread_post_end", torrent).prev().text();
+              torrent_leech = "";
+              date_added = $("td.forum_thread_post_end", torrent).prev().prev().text();
 
               data_content = {
                 torrent_num: count,
@@ -45,7 +46,8 @@ module.exports = {
                 leechs: torrent_leech,
                 size: torrent_size,
                 torrent_link: eztv_link,
-                date_added: date_added
+                date_added: date_added,
+                source: "eztv"
               };
 
 

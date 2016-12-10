@@ -56,7 +56,8 @@ module.exports = {
                 leechs: torrent_leech,
                 size: torrent_size,
                 torrent_link: magnet_link,
-                date_added: date_added
+                date_added: date_added,
+                source: "lime"
               };
 
               torrent_content.push(data_content);

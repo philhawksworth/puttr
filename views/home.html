@@ -4,7 +4,10 @@
   <title>puttr</title>
   <meta name=viewport content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
+
+
   <style type="text/css" media="screen">
+
     html, body. div, ul, li, p {
       padding: 0;
       margin: 0;
@@ -12,16 +15,15 @@
 
     body {
       font-family: sans-serif;
-      font-size: 14px;
+      font-size: 16px;
       color: #333;
       text-align: center;
       padding:10px;
     }
-    input[type="search"] {
+
+    input[type=search] {
       width:100%;
-      border-radius: 0;
-      font-size: 18px;
-      padding:0.2em;
+      font-size: 2em;
       margin:10px 0 20px;
     }
     .results {
@@ -45,6 +47,12 @@
   </style>
 </head>
 <body>
+  <header>
+     Search
+  </header>
+
+
+
   <form action="." method="post" accept-charset="utf-8">
   <input type="search" id="search" name="search" value="{{search}}"></input>
   </form>
@@ -52,10 +60,12 @@
     <p>{{results.length}} results</p>
     <ul>
     {{#results}}
-      <li><a href="{{torrent_link}}" class="magnet">{{title}}</a> <p>{{size}} {{seeds}}</p></li>
+      <li>{{date_added}} - <a href="{{torrent_link}}" class="magnet">{{title}}</a> <p>{{size}} {{seeds}} (from {{source}})</p></li>
     {{/results}}
     </ul>
   </div>
-
+  <script>
+    document.getElementById('search').focus();
+  </script>
 </body>
 </html>

@@ -7,7 +7,8 @@ var fs = require('fs');
 var http = require('http');
 var chalk = require('chalk');
 
-var kickass = require('./kickass.js');
+// var kickass = require('./kickass.js');
+var yts = require('./yts.js');
 var eztv = require('./eztv.js');
 var limetorrents = require('./limetorrents.js');
 
@@ -43,22 +44,31 @@ server.route({
   handler: function (request, reply) {
 
     var query = request.payload.search;
+    var resultsArray = [];
 
     Q.allSettled([
-      kickass.search(query, null, 1, "https://kat.cr"),
+      // kickass.search(query, null, 1, "https://katcr.to"),
+      yts.search(query, "https://yts.ag", null, 1, 50),
       eztv.search(query, "https://www.eztv.it"),
       limetorrents.search(query, null, 1, "http://limetorrents.cc")
     ])
     .then(function (results) {
-        var resultsArray = [];
+        // var resultsArray = [];
+        // var hashArray = [];
         var count = 0;
         results.forEach(function (result) {
           if (result.state === "fulfilled") {
             result.value.forEach(function (item) {
               // var link = item.torrent_link;
               // var hash = link.match(/btih:(.+)&dn/)[1];
-              // console.log(hash);
-              resultsArray.push(item);
+              // if(hashArray.indexOf(hash) == -1) {
+              //   console.log("UNique! adding "+ hash);
+              //   hashArray.push(hash);
+                resultsArray.push(item);
+              // } else {
+              //   console.log("skipping a dupe");
+              // }
+
             });
           } else {
               var reason = result.reason;
