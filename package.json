@@ -1,22 +1,20 @@
 {
-  "name": "torrent-puttr",
-  "version": "1.0.0",
+  "name": "puttr",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "chalk": "^0.5.1",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "netlify-lambda serve src/lambda",
+    "build": "netlify-lambda build src/lambda"
+  },
+  "devDependencies": {
+    "netlify-lambda": "^0.2.0",
     "cheerio": "^0.18.0",
-    "handlebars": "^4.0.5",
-    "hapi": "^13.0.0",
-    "hoek": "^3.0.4",
-    "moment": "^2.9.0",
-    "q": "^2.0.3",
+    "node-fetch": "^1.7.3",
     "request": "^2.51.0",
-    "vision": "^4.0.1"
+    "moment": "^2.20.1"
   }
 }

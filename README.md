@@ -1,8 +1,7 @@
 # Puttr
 
-Conveninent magnet link discovery. Best hosted in a freindly territory like in the US on Heroku.
+Convenient magnet link discovery. Best hosted in a friendly territory.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## Acknowledgements
 

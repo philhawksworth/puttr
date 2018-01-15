@@ -1,0 +1,10 @@
+[build]
+  Functions = "functions"
+
+
+# Proxy puttr seaches to my search lambda
+[[redirects]]
+  from = "/puttr/api"
+  to = "/.netlify/functions/puttr"
+  status = 200
+
