@@ -66,9 +66,9 @@
             dataType: "json",
             url: "/.netlify/functions/puttr?q=" + searchString,
             success: function(data){
-                var results = JSON.parse(data.body).results;
-                var html, info  = "";
-                $(results).each(function(){
+                var body = JSON.parse(data.body);
+                var body, info  = "";
+                $(data.results).each(function(){
                   if(this.summary){
                     info = "<div>" + this.summary + "</div>";
                   };

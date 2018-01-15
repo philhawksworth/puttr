@@ -23,7 +23,7 @@ export function handler(event, context, callback) {
     console.log(hits.length + " results returned");
     callback(null, {
       statusCode: 200,
-      body: {"results": hits }
+      body: JSON.stringify(hits)
     })
   });
 
