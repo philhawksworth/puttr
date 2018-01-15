@@ -66,15 +66,15 @@
             dataType: "json",
             url: "/.netlify/functions/puttr?q=" + searchString,
             success: function(data){
-                var d = JSON.parse(data.body);
+                var results = JSON.parse(data.body);
                 var html = "";
-                $(d.results).each(function(){
+                $(results).each(function(){
                   html += "<li>"+ this.date_added +
-                    " - <a href='" + this.torrent_link + "' class='magnet'>"+ this.title + "</a>" +
+                    " - <a href='" + this.magnet + "' class='magnet'>"+ this.title + "</a>" +
                     "<p>"+ this.size+ " " + this.seeds + "(from " + this.source +")</p></li>";
                 })
                 $('.results ul').html(html);
-                $('.count').html(d.results.length + " results");
+                $('.count').html(results.length + " results");
             }
         });
       });
