@@ -27,7 +27,7 @@ function inspect(html) {
           size: data.data.movies[torrent].torrents[version].size,
           magnet: "magnet:?xt=urn:btih:" + hash + "&dn=" + title,
           date_added: moment(Date.parse(data.data.movies[torrent].torrents[version].date_uploaded.split(' ')[0])).fromNow(),
-          summary: data.data.movies[torrent].summary;
+          summary: data.data.movies[torrent].summary,
           source: "yts"
         });
       }
