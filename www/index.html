@@ -67,11 +67,15 @@
             url: "/.netlify/functions/puttr?q=" + searchString,
             success: function(data){
                 var results = JSON.parse(data.body);
-                var html = "";
+                var html, info  = "";
                 $(results).each(function(){
+                  if(this.summary){
+                    info = "<div>" + this.summary + "</div>";
+                  };
                   html += "<li>"+ this.date_added +
                     " - <a href='" + this.magnet + "' class='magnet'>"+ this.title + "</a>" +
-                    "<p>"+ this.size+ " " + this.seeds + "(from " + this.source +")</p></li>";
+                    "<p>"+ this.size+ " " + this.seeds + "(from " + this.source +")</p>" +
+                    info + "</li>";
                 })
                 $('.results ul').html(html);
                 $('.count').html(results.length + " results");
