@@ -16,16 +16,20 @@ function inspect(html) {
 
     // inspect each item found
     for(var torrent in data.data.movies){
-      var hash = data.data.movies[torrent].torrents[torrents].hash;
+
       var title = data.data.movies[torrent].title_long
-      results.push({
-        title: title + " " + data.data.movies[torrent].torrents[torrents].quality,
-        seeds: data.data.movies[torrent].torrents[torrents].seeds,
-        size: data.data.movies[torrent].torrents[torrents].size,
-        magnet: "magnet:?xt=urn:btih:" + hash + "&dn=" + title,
-        date_added: moment(Date.parse(data.data.movies[torrent].torrents[torrents].date_uploaded.split(' ')[0])).fromNow(),
-        source: "yts"
-      });
+
+      for(var version in data.data.movies[torrent].torrents){
+        var hash = data.data.movies[torrent].torrents[version].hash;
+        results.push({
+          title: title + " " + data.data.movies[torrent].torrents[version].quality,
+          seeds: data.data.movies[torrent].torrents[version].seeds,
+          size: data.data.movies[torrent].torrents[version].size,
+          magnet: "magnet:?xt=urn:btih:" + hash + "&dn=" + title,
+          date_added: moment(Date.parse(data.data.movies[torrent].torrents[version].date_uploaded.split(' ')[0])).fromNow(),
+          source: "yts"
+        });
+      }
     }
 
   }
