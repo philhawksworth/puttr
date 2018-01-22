@@ -66,9 +66,8 @@
             dataType: "json",
             url: "/.netlify/functions/puttr?q=" + searchString,
             success: function(data){
-                var body = JSON.parse(data.body);
                 var info  = "";
-                $(body).each(function(){
+                $(data.body).each(function(){
                   if(this.summary){
                     info = "<div>" + this.summary + "</div>";
                   };
@@ -78,7 +77,7 @@
                     info + "</li>";
                 })
                 $('.results ul').html(html);
-                $('.count').html(body.length + " results");
+                $('.count').html(data.body.length + " results");
             }
         });
       });
