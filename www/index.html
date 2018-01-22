@@ -68,13 +68,7 @@
             success: function(data){
                 var body = JSON.parse(data.body);
                 var info  = "";
-
-                console.log(body);
-
                 $(body).each(function(){
-
-                  console.log(this);
-
                   if(this.summary){
                     info = "<div>" + this.summary + "</div>";
                   };
@@ -85,7 +79,6 @@
                 })
                 $('.results ul').html(html);
                 $('.count').html(body.length + " results");
-
             }
         });
       });
