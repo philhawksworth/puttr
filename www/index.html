@@ -68,7 +68,7 @@
             success: function(data){
                 var body = JSON.parse(data.body);
                 var body, info  = "";
-                $(data.results).each(function(){
+                $(body).each(function(){
                   if(this.summary){
                     info = "<div>" + this.summary + "</div>";
                   };
