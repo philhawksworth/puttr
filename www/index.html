@@ -42,6 +42,12 @@
         padding: 2px 0;
         font-size: 0.8em;
       }
+      .description {
+        font-size: 0.8em;
+        font-style: italic;
+        margin-top: 0.2em;
+        color: #888;
+      }
   </style>
   <script src="/jquery.min.js"></script>
 </head>
@@ -66,10 +72,11 @@
             dataType: "json",
             url: "/.netlify/functions/puttr?q=" + searchString,
             success: function(data){
-                var html, info  = "";
+                var html = "";
+                var info  = "";
                 $(data.body).each(function(){
                   if(this.summary){
-                    info = "<div>" + this.summary + "</div>";
+                    info = "<div class='description'>" + this.summary + "</div>";
                   };
                   html += "<li>"+ this.date_added +
                     " - <a href='" + this.magnet + "' class='magnet'>"+ this.title + "</a>" +
