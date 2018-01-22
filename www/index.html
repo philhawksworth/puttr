@@ -63,6 +63,9 @@
 
     $(function() {
 
+      // $('.live').live("click", function(ev){
+
+      // });
       $('#search').focus();
       $('#searchForm').submit(function(e){
         e.preventDefault();
@@ -80,7 +83,7 @@
                   };
                   html += "<li>"+ this.date_added +
                     " - <a href='" + this.magnet + "' class='magnet'>"+ this.title + "</a>" +
-                    "<p>"+ this.size+ " " + this.seeds + "(from " + this.source +")</p>" +
+                    "<p>"+ this.size+ " " + this.seeds + " (from " + this.source +") <a class='info'> ? </a></p>" +
                     info + "</li>";
                 })
                 $('.results ul').html(html);
