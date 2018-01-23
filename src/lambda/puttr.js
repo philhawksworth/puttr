@@ -19,11 +19,10 @@ export function handler(event, context, callback) {
   ])
   .then(function(values){
     var hits = [].concat.apply([], values); // combine all of the results arrays
-    var response = {"statusCode":200, "body": hits };
     console.log(hits.length + " results returned");
     callback(null, {
       statusCode: 200,
-      body: JSON.stringify(response)
+      body: JSON.stringify(hits)
     })
   });
 

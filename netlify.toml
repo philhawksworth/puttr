@@ -2,11 +2,3 @@
   Functions = "functions"
   publish = "www"
   command = "npm run build"
-
-
-# Proxy puttr seaches to my search lambda
-[[redirects]]
-  from = "/puttr/api"
-  to = "/.netlify/functions/puttr"
-  status = 200
-

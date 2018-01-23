@@ -47,6 +47,7 @@
         font-style: italic;
         margin-top: 0.2em;
         color: #888;
+        max-width: 600px;
       }
   </style>
   <script src="/jquery.min.js"></script>
@@ -63,9 +64,6 @@
 
     $(function() {
 
-      // $('.live').live("click", function(ev){
-
-      // });
       $('#search').focus();
       $('#searchForm').submit(function(e){
         e.preventDefault();
@@ -77,17 +75,17 @@
             success: function(data){
                 var html = "";
                 var info  = "";
-                $(data.body).each(function(){
+                $(data).each(function(){
                   if(this.summary){
                     info = "<div class='description'>" + this.summary + "</div>";
                   };
                   html += "<li>"+ this.date_added +
                     " - <a href='" + this.magnet + "' class='magnet'>"+ this.title + "</a>" +
-                    "<p>"+ this.size+ " " + this.seeds + " (from " + this.source +") <a class='info'> ? </a></p>" +
+                    "<p>"+ this.size+ " " + this.seeds + " (from " + this.source +")</p>" +
                     info + "</li>";
                 })
                 $('.results ul').html(html);
-                $('.count').html(data.body.length + " results");
+                $('.count').html(data.length + " results");
             }
         });
       });
