@@ -75,7 +75,7 @@
             success: function(data){
                 var html = "";
                 var info  = "";
-                $(data.body).each(function(){
+                $(data).each(function(){
                   if(this.summary){
                     info = "<div class='description'>" + this.summary + "</div>";
                   };
@@ -85,7 +85,7 @@
                     info + "</li>";
                 })
                 $('.results ul').html(html);
-                $('.count').html(data.body.length + " results");
+                $('.count').html(data.length + " results");
             }
         });
       });
