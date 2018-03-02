@@ -23,7 +23,7 @@ export function handler(event, context, callback) {
     var hits = [].concat.apply([], values);
 
     // sort hits array by the number of seeds
-    hits = hits.sort(function(a, b) { return a.seeds - b.seeds });
+    hits = hits.sort(function(a, b) { return b.seeds - a.seeds });
 
     console.log(hits.length + " results returned");
     callback(null, {
