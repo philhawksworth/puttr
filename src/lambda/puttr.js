@@ -18,7 +18,13 @@ export function handler(event, context, callback) {
     eztv.search(searchStr)
   ])
   .then(function(values){
-    var hits = [].concat.apply([], values); // combine all of the results arrays
+
+    // combine all of the results arrays
+    var hits = [].concat.apply([], values);
+
+    // sort hits array by the number of seeds
+    hits = hits.sort(function(a, b) { return a.seeds - b.seeds });
+
     console.log(hits.length + " results returned");
     callback(null, {
       statusCode: 200,
