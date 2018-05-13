@@ -17,6 +17,11 @@ export function handler(event, context, callback) {
         statusCode: 200,
         body: body
       })
+    } else {
+      callback(null, {
+        statusCode: 400,
+        body: err
+      })
     }
   });
 }
