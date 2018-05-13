@@ -18,6 +18,9 @@ export function handler(event, context, callback) {
         body: body
       })
     } else {
+
+      console.log('ERROR: ', err);
+
       callback(null, {
         statusCode: 400,
         body: err
