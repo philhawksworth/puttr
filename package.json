@@ -6,7 +6,6 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "netlify-lambda serve src/lambda",
     "build": "netlify-lambda build src/lambda"
   },

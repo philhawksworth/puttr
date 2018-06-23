@@ -15,7 +15,7 @@ export function handler(event, context, callback) {
   Promise.all([
     lime.search(searchStr),
     yts.search(searchStr),
-    eztv.search(searchStr)
+    eztv.search(searchStr),
   ])
   .then(function(values){
 
@@ -24,7 +24,6 @@ export function handler(event, context, callback) {
 
     // sort hits array by the number of seeds
     hits = hits.sort(function(a, b) { return b.seeds - a.seeds });
-
     console.log(hits.length + " results returned");
     callback(null, {
       statusCode: 200,
