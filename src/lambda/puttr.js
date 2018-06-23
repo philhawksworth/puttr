@@ -24,8 +24,11 @@ export function handler(event, context, callback) {
 
     // sort hits array by the number of seeds
     hits = hits.sort(function(a, b) { return b.seeds - a.seeds });
+
+    // Send it
     console.log(hits.length + " results returned");
     callback(null, {
+      contentType: 'text/json',
       statusCode: 200,
       body: JSON.stringify(hits)
     })

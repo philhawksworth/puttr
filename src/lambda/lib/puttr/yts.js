@@ -26,6 +26,7 @@ function inspect(html) {
           seeds: data.data.movies[torrent].torrents[version].seeds,
           size: data.data.movies[torrent].torrents[version].size,
           magnet: "magnet:?xt=urn:btih:" + hash + "&dn=" + title,
+          hash: hash,
           date_added: moment(Date.parse(data.data.movies[torrent].torrents[version].date_uploaded.split(' ')[0])).fromNow(),
           summary: data.data.movies[torrent].summary,
           source: "yts"
@@ -46,6 +47,12 @@ function html(response){
 
 module.exports.search = function(query) {
   var url = "https://yts.ag/api/v2/list_movies.json?query_term=" + encodeURIComponent(query) + '&sort=seeds&order=desc&set=1';
+
+  // proxy if local
+  if(!process.env.NODE_ENV) {
+    var url = `https://puttr.hawksworx.com/.netlify/functions/preview?q=${url}`;  var url = `https://puttr.hawksworx.com/.netlify/functions/preview?q=${url}`;
+  }
+
   console.log("Checking YTS for " + query ) ;
   console.log("  " + url) ;
   return fetch(url).then(html).then(inspect);

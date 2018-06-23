@@ -18,7 +18,7 @@ function inspect(html) {
     $("tr.forum_header_border").each(function(index, torrent){
       results.push({
         title: $(torrent).find("a.epinfo").text(),
-        seeds: $("td.forum_thread_post_end", torrent).prev().text(),
+        seeds: parseInt($("td.forum_thread_post_end", torrent).prev().text(), 10),
         size: $(torrent).find("a.epinfo").attr("title").match(/\([^)]+\)$/)[0].slice(1,-1),
         magnet: $(torrent).find("a.magnet").attr('href'),
         date_added: $("td.forum_thread_post_end", torrent).prev().prev().text(),
@@ -41,6 +41,11 @@ module.exports.search = function(query) {
     return;
   }
   var url = "https://www.eztv.it/search/" + query.split(" ").join("-");
+  // proxy if local
+  if(!process.env.NODE_ENV) {
+    var url = `https://puttr.hawksworx.com/.netlify/functions/preview?q=${url}`;  var url = `https://puttr.hawksworx.com/.netlify/functions/preview?q=${url}`;
+  }
+
   console.log("Checking EZTV for " + query ) ;
   console.log("  " + url) ;
   return fetch(url).then(html).then(inspect);
