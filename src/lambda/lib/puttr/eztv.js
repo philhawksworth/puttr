@@ -36,6 +36,10 @@ function html(response){
 
 
 module.exports.search = function(query) {
+  if(!query) {
+    console.log('Empty search. Skip the TV');
+    return;
+  }
   var url = "https://www.eztv.it/search/" + query.split(" ").join("-");
   console.log("Checking EZTV for " + query ) ;
   console.log("  " + url) ;
