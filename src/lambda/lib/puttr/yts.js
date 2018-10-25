@@ -49,9 +49,9 @@ module.exports.search = function(query) {
   var url = "https://yts.ag/api/v2/list_movies.json?query_term=" + encodeURIComponent(query) + '&sort=seeds&order=desc&set=1';
 
   // proxy if local
-  if(!process.env.NODE_ENV) {
-    var url = `https://puttr.hawksworx.com/.netlify/functions/preview?q=${url}`;  var url = `https://puttr.hawksworx.com/.netlify/functions/preview?q=${url}`;
-  }
+  //if(!process.env.NODE_ENV) {
+  //  var url = `https://puttr.hawksworx.com/.netlify/functions/preview?q=${url}`;  
+  //}
 
   console.log("Checking YTS for " + query ) ;
   console.log("  " + url) ;
