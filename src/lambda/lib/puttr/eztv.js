@@ -42,9 +42,10 @@ module.exports.search = function(query) {
   }
   var url = "https://www.eztv.it/search/" + query.split(" ").join("-");
   // proxy if local
-  if(!process.env.NODE_ENV) {
-    var url = `https://puttr.hawksworx.com/.netlify/functions/preview?q=${url}`;  var url = `https://puttr.hawksworx.com/.netlify/functions/preview?q=${url}`;
-  }
+  //if(!process.env.NODE_ENV) {
+    //var url = `https://puttr.hawksworx.com/.netlify/functions/preview?q=${url}`;  
+   
+  //}
 
   console.log("Checking EZTV for " + query ) ;
   console.log("  " + url) ;
